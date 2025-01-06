@@ -42,6 +42,3 @@ next-env.d.ts
 # Jetbrains
 .idea
 .fleet
-
-# environment
-.env

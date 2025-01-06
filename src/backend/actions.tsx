@@ -1,15 +1,14 @@
 'use server';
 import {sql} from "@vercel/postgres"
-import { Transaction } from "@/backend/types"
+// import { Transaction } from "@/backend/types"
 // functions for sending various types of data to the database such as new transactions, edited transactions, or deleting transactions
 
-export async function seedData() {
-    await sql`
-        INSERT INTO app_state (current_balance) VALUES (0.00);
-    `
-}
-
-export async function newTransaction(Transaction: Transaction) {
+export async function newTransaction(Transaction: {
+    type: "income" | "expense";
+    amount: number;
+    date: Date;
+    category: string
+}) {
     await sql`
         WITH new_transaction AS (
         INSERT INTO transactions (type, amount, date, category)
