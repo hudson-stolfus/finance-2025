@@ -35,30 +35,3 @@ Make a program that has/does the following:
 
 
 ## Visual Markup
-
----
-
-```bash
-# Recommended for most uses
-DATABASE_URL=postgres://neondb_owner:0vhBVcs4REmx@ep-flat-smoke-a59u5ami-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require
-
-# For uses requiring a connection without pgbouncer
-DATABASE_URL_UNPOOLED=postgresql://neondb_owner:0vhBVcs4REmx@ep-flat-smoke-a59u5ami.us-east-2.aws.neon.tech/neondb?sslmode=require
-
-# Parameters for constructing your own connection string
-PGHOST=ep-flat-smoke-a59u5ami-pooler.us-east-2.aws.neon.tech
-PGHOST_UNPOOLED=ep-flat-smoke-a59u5ami.us-east-2.aws.neon.tech
-PGUSER=neondb_owner
-PGDATABASE=neondb
-PGPASSWORD=0vhBVcs4REmx
-
-# Parameters for Vercel Postgres Templates
-POSTGRES_URL=postgres://neondb_owner:0vhBVcs4REmx@ep-flat-smoke-a59u5ami-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require
-POSTGRES_URL_NON_POOLING=postgres://neondb_owner:0vhBVcs4REmx@ep-flat-smoke-a59u5ami.us-east-2.aws.neon.tech/neondb?sslmode=require
-POSTGRES_USER=neondb_owner
-POSTGRES_HOST=ep-flat-smoke-a59u5ami-pooler.us-east-2.aws.neon.tech
-POSTGRES_PASSWORD=0vhBVcs4REmx
-POSTGRES_DATABASE=neondb
-POSTGRES_URL_NO_SSL=postgres://neondb_owner:0vhBVcs4REmx@ep-flat-smoke-a59u5ami-pooler.us-east-2.aws.neon.tech/neondb
-POSTGRES_PRISMA_URL=postgres://neondb_owner:0vhBVcs4REmx@ep-flat-smoke-a59u5ami-pooler.us-east-2.aws.neon.tech/neondb?pgbouncer=true&connect_timeout=15&sslmode=require
-```
