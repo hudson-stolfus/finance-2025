@@ -30,9 +30,9 @@ export async function getBalance() {
 
 export async function getCategories() {
     const data = await sql`
-    SELECT category FROM categories;
-    `
-    return data
+    SELECT DISTINCT category FROM transactions;
+    `;
+    return data.rows.map(row => row.category);
 }
 
 export async function getLastTransactions(num:number): Promise<Transaction[]> {
