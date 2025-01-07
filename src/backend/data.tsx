@@ -1,13 +1,17 @@
+'use server'
 import {sql} from "@vercel/postgres"
 import {unstable_noStore as noStore} from "next/cache";
-import { Transaction } from "@/backend/types"
+import {Transaction} from "@/backend/types"
 
-// functions for grabbing various data like all transactions, transaction by id, and the categories that a transaction can be
-export async function getAllTransactions(): Promise<Transaction[]> {
+// functions for grabbing various data
+export async function getAllTransactions(search = "",  filter = ""): Promise<Transaction[]> {
     noStore();
     const data = await sql<Transaction>`SELECT *
         FROM transactions
-        order by date DESC;`
+        WHERE category ILIKE ${`%${search}%`}
+        AND type ILIKE ${`%${filter}%`}
+        ORDER BY date DESC;
+`;
     return data.rows.map((transaction: Transaction) => ({
         id: transaction.id,
         type: transaction.type,

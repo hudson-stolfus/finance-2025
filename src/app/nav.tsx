@@ -2,19 +2,13 @@ import Link from 'next/link';
 
 export default function Nav() {
     return (
-        <nav className="p-6 bg-gray-800 text-white">
-            <ul className="flex space-x-4">
-                <li>
-                    <Link href="/">
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/transactions">
-                        Transactions
-                    </Link>
-                </li>
-            </ul>
+        <nav className="bg-gradient-to-r from-green-400 to-blue-500 p-4 shadow-lg">
+            <div className="container mx-auto flex justify-between items-center">
+                <Link href="/" className="text-white text-2xl font-bold">FIN25</Link>
+                <div className="space-x-4">
+                    <Link href="/transactions" className="text-white text-lg hover:underline">Transactions</Link>
+                </div>
+            </div>
         </nav>
     );
 }
