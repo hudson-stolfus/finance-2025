@@ -42,3 +42,34 @@ export async function deleteTransaction(id: string) {
 `
 }
 
+export async function editTransaction(id: string, Transaction: {
+    type: "income" | "expense";
+    amount: number;
+    date: Date;
+    category: string
+}) {
+    await sql`
+        WITH old_transaction AS (
+        SELECT * FROM transactions
+        WHERE id = ${id}
+),
+        new_transaction AS (
+        UPDATE transactions
+        SET type = ${Transaction.type}, amount = ${Transaction.amount}, date = ${Transaction.date.toISOString().slice(0,10)}, category = ${Transaction.category}
+        WHERE id = ${id}
+            RETURNING amount, type
+)
+        UPDATE app_state
+        SET current_balance =
+                CASE
+                    WHEN old_transaction.type = 'income' THEN current_balance - old_transaction.amount
+                    WHEN old_transaction.type = 'expense' THEN current_balance + old_transaction.amount
+                    END
+                +
+                CASE
+                    WHEN new_transaction.type = 'income' THEN current_balance + new_transaction.amount
+                    WHEN new_transaction.type = 'expense' THEN current_balance - new_transaction.amount
+                    END;
+`
+}
+

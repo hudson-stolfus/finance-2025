@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback } from "react";
 import { getAllTransactions } from "@/backend/data";
+import { deleteTransaction } from "@/backend/actions";
 import { TransacTable } from "@/app/components/serverC";
 import { Transaction } from "@/backend/types";
 import { saveAs } from "file-saver";
@@ -20,6 +21,11 @@ export default function TransactionsPage() {
         }, 0);
         setBalance(balance);
     }, [search, filter]);
+
+    const handleDelete = async (id: string) => {
+        await deleteTransaction(id);
+        handleSearch();
+    };
 
     const handleExport = async () => {
         const data = await getAllTransactions(search, filter);
@@ -58,11 +64,13 @@ export default function TransactionsPage() {
                 <button onClick={handleExport} className="bg-green-500 hover:bg-green-700 text-white p-3 rounded-lg shadow-lg">
                     Export
                 </button>
-                <div className="ml-auto text-3xl font-bold text-white p-4 bg-gradient-to-r from-green-400 to-blue-500 border-2 border-green-600 rounded shadow-lg">
+                <div
+                    className="ml-auto text-3xl font-bold text-white p-4 bg-gradient-to-r from-green-400 to-blue-500 border-2 border-green-600 rounded shadow-lg">
                     Balance: ${balance.toFixed(2)}
+                    <div className="text-sm text-white mt-1">*Affected by Filters</div>
                 </div>
             </div>
-            <TransacTable transactions={transactions} />
+            <TransacTable transactions={transactions} onDelete={handleDelete} />
         </div>
     );
 }
