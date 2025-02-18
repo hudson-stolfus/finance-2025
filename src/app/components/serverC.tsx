@@ -1,9 +1,9 @@
-import {Transaction} from "@/backend/types";
+import { Transaction } from "@/backend/types";
 import React from "react";
 
-export function TransacTable({transactions, onDelete}: {
+export function TransacTable({ transactions, onDelete }: {
     transactions: Transaction[],
-    onDelete?: (id: number) => void
+    onDelete?: (id: string) => Promise<void>
 }) {
     return (
         <table className="min-w-full bg-white">
@@ -26,7 +26,7 @@ export function TransacTable({transactions, onDelete}: {
                     {onDelete && (
                         <td className="py-2">
                             <button
-                                onClick={() => onDelete(transaction.id)}
+                                onClick={() => onDelete(transaction.id.toString())}
                                 className="bg-red-500 hover:bg-red-700 text-white p-1 rounded-lg shadow-lg"
                             >
                                 Delete
@@ -39,7 +39,6 @@ export function TransacTable({transactions, onDelete}: {
         </table>
     );
 }
-
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
