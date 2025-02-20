@@ -23,7 +23,7 @@ export function TransacTable({ transactions, onDelete, onEdit }: {
                     <tr key={transaction.id} className={`border-b ${transaction.type === "income" ? "bg-green-100" : "bg-red-100"}`}>
                         <td className="py-2 px-4">{new Date(transaction.date).toLocaleDateString()}</td>
                         <td className="py-2 px-4">{transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}</td>
-                        <td className="py-2 px-4">{transaction.amount}</td>
+                        <td className="py-2 px-4">{"$"+transaction.amount.toFixed(2)}</td>
                         <td className="py-2 px-4">{transaction.category}</td>
                         {(onDelete || onEdit) && (
                             <td className="py-2 px-4 flex space-x-2">
