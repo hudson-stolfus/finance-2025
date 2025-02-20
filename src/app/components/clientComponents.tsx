@@ -87,7 +87,6 @@ export function HomeComponent({lastTen, balance, categories}: {
                                 className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm">
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
-                            <option value="withholding">Withholding</option>
                         </select>
                     </div>
                     <div>

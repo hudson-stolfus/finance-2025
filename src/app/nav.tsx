@@ -7,6 +7,7 @@ export default function Nav() {
                 <Link href="/" className="text-white text-2xl font-bold">FIN25</Link>
                 <div className="space-x-4">
                     <Link href="/transactions" className="text-white text-lg hover:underline">Transactions</Link>
+                    <Link href="/help" className="text-white text-lg hover:underline">Help</Link>
                 </div>
             </div>
         </nav>

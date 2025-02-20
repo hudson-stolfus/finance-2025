@@ -63,10 +63,10 @@ export async function editTransaction(id: string, Transaction: {
             RETURNING amount, type
         )
         UPDATE app_state
-        SET current_balance =
+        SET current_balance = COALESCE(current_balance, 0) +
                 CASE
-                    WHEN old_transaction.type = 'income' THEN current_balance - old_transaction.amount
-                    WHEN old_transaction.type = 'expense' THEN current_balance + old_transaction.amount
+                    WHEN old_transaction.type = 'income' THEN -old_transaction.amount
+                    WHEN old_transaction.type = 'expense' THEN old_transaction.amount
                     END
                     +
                 CASE
