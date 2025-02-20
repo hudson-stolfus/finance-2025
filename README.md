@@ -4,11 +4,14 @@
 - [AustinC02](https://github.com/AustinC02)
 
 ## Planning « TODO
-| Date     | Assignee  | Work          |     Status      |
-|----------|-----------|---------------|:---------------:|
-| 1/3/2025 | HS & AC   | Brainstorming | :green_circle:  |
-| 1/4/2025 | HS        | Visual Markup | :yellow_circle: |
-| 1/4/2025 | AC        | Pseudo Code   |  :red_circle:   |
+| Date      | Assignee | Work          |     Status      |
+|-----------|----------|---------------|:---------------:|
+| 1/3/2025  | HS & AC  | Brainstorming | :green_circle:  |
+| 1/4/2025  | HS       | Visual Markup | :yellow_circle: |
+| 1/4/2025  | AC       | Pseudo Code   | :green_circle:  |
+| 2/19/2025 | AC       | All Code      | :green_circle:  |
+| 2/20/2025 | AC       | Commenting    | :yellow_circle: |
+| 2/29/2025 | HS       | Styling       | :red_circle:    |
 
 ## Topic
 Create a program that helps students manage their personal finances by tracking account balances, income and expenses. The program should allow users to input details about their income sources and expenses, including the amount, category, and date of each transaction.
