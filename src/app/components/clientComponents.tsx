@@ -1,7 +1,7 @@
 'use client';
 import {useState, useEffect, FormEvent} from 'react';
 import Link from 'next/link';
-import Modal, {TransacTable} from '@/app/components/serverC';
+import Modal, {TransacTable} from '@/app/components/serverComponents';
 import {newTransaction} from '@/backend/actions';
 import {Transaction} from '@/backend/types';
 import {getAllTransactions} from "@/backend/data";

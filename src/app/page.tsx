@@ -1,5 +1,5 @@
 import {getLastTransactions, getBalance, getCategories} from '@/backend/data';
-import {HomeComponent} from '@/app/components/clientC';
+import {HomeComponent} from '@/app/components/clientComponents';
 
 export default async function App() {
     const lastTen = await getLastTransactions(5);

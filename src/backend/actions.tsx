@@ -50,26 +50,29 @@ export async function editTransaction(id: string, Transaction: {
 }) {
     await sql`
         WITH old_transaction AS (
-        SELECT * FROM transactions
-        WHERE id = ${id}
-),
-        new_transaction AS (
+            SELECT * FROM transactions
+            WHERE id = ${id}
+        ),
+             new_transaction AS (
         UPDATE transactions
-        SET type = ${Transaction.type}, amount = ${Transaction.amount}, date = ${Transaction.date.toISOString().slice(0,10)}, category = ${Transaction.category}
+        SET type = ${Transaction.type},
+            amount = ${Transaction.amount},
+            date = ${Transaction.date.toISOString().slice(0,10)},
+            category = ${Transaction.category}
         WHERE id = ${id}
             RETURNING amount, type
-)
+        )
         UPDATE app_state
         SET current_balance =
                 CASE
                     WHEN old_transaction.type = 'income' THEN current_balance - old_transaction.amount
                     WHEN old_transaction.type = 'expense' THEN current_balance + old_transaction.amount
                     END
-                +
+                    +
                 CASE
-                    WHEN new_transaction.type = 'income' THEN current_balance + new_transaction.amount
-                    WHEN new_transaction.type = 'expense' THEN current_balance - new_transaction.amount
-                    END;
-`
+                    WHEN new_transaction.type = 'income' THEN new_transaction.amount
+                    WHEN new_transaction.type = 'expense' THEN -new_transaction.amount
+                    END
+            FROM old_transaction, new_transaction;
+    `
 }
-
