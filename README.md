@@ -1,9 +1,10 @@
-# MVP
+# SHS Finance
+![Logo](brand/logo-dark.png) 
 ## Authors
 - [Coralid](https://github.com/Coralid)
 - [AustinC02](https://github.com/AustinC02)
 
-## Planning « TODO
+## Planning
 | Date       | Assignee | Work          |     Status      |
 |------------|----------|---------------|:---------------:|
 | 2025-01-03 | HS & AC  | Brainstorming | :green_circle:  |
@@ -38,3 +39,4 @@ Make a program that has/does the following:
 
 
 ## Visual Markup
+![Markup](markups/FBLA%202025%20SHS%20Finance%202025-03-03.png)
