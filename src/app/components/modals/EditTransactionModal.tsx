@@ -23,16 +23,8 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
             <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Edit Transaction</h2>
             <form onSubmit={onSubmit} className="space-y-6">
                 <div>
-                    <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type</label>
-                    <select name="type" id="type" defaultValue={transaction.type}
-                            className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm">
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                </div>
-                <div>
                     <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
-                    <input type="number" name="amount" id="amount" step="0.01" defaultValue={transaction.amount}
+                    <input type="number" name="amount" id="amount" step="0.01" defaultValue={transaction.sum}
                            className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm"/>
                 </div>
                 <div>
@@ -41,8 +33,8 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
                            className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm"/>
                 </div>
                 <div>
-                    <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-                    <input type="text" name="category" id="category" defaultValue={transaction.category}
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="name" id="category" defaultValue={transaction.name}
                            className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm"/>
                 </div>
                 <button type="submit"
