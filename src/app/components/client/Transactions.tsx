@@ -6,21 +6,21 @@ import {TransacTable} from '@/app/components/server/serverComponents';
 import {Transaction} from '@/backend/types';
 
 export default function Transactions() {
-    const [search, setSearch] = useState('');
-    const [filter, setFilter] = useState('');
-    const [balance, setBalance] = useState<number>(0);
+    const [search] = useState('');
+    const [filter] = useState('');
+    const [, setBalance] = useState<number>(0);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [transactionToEdit, setTransactionToEdit] = useState<Transaction | null>(null);
+    const [, setIsEditModalOpen] = useState(false);
+    const [, setTransactionToEdit] = useState<Transaction | null>(null);
 
     const handleSearch = useCallback(async () => {
-        const data = await getAllTransactions(search, filter);
+        const data = await getAllTransactions(search);
         setTransactions(data);
         const newBalance = data.reduce((acc, transaction) => {
             return acc + transaction.sum;
         }, 0);
         setBalance(newBalance);
-    }, [search, filter]);
+    }, [search]);
 
     const handleDelete = async (id: string) => {
         await deleteTransaction(id);

@@ -4,7 +4,7 @@ import {unstable_noStore as noStore} from "next/cache";
 import {Transaction} from "@/backend/types"
 
 // functions for grabbing various data
-export async function getAllTransactions(search = "",  filter = ""): Promise<Transaction[]> {
+export async function getAllTransactions(search = ""): Promise<Transaction[]> {
     noStore();
     const { rows } = await sql<Transaction>`
         SELECT *
