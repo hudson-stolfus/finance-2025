@@ -9,7 +9,7 @@ import * as XLSX from 'xlsx';
 import {EditTransactionModal} from "@/app/components/modals/EditTransactionModal";
 import {AddTransactionModal} from "@/app/components/modals/AddTransactionModal";
 
-export default function HomeComponent({categories}: { categories: string[] }) {
+export default function Transactions({categories}: { categories: string[] }) {
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('');
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -96,8 +96,7 @@ export default function HomeComponent({categories}: { categories: string[] }) {
     }, [search, filter, handleSearch]);
 
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
-            <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">Transactions</h1>
+        <div className="p-6 min-h-screen">
             <div className="mb-6 flex items-center">
                 <input
                     type="text"
@@ -129,14 +128,6 @@ export default function HomeComponent({categories}: { categories: string[] }) {
                     <div className="text-sm text-white mt-1">*Affected by Filters</div>
                 </div>
             </div>
-            <TransacTable transactions={transactions} onDelete={handleDelete} onEdit={handleEdit}/>
-            {transactionToEdit && (
-                <EditTransactionModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}
-                                      transaction={transactionToEdit} onSubmit={handleEditSubmit}/>
-            )}
-            <AddTransactionModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)}
-                                 categories={categories} onSubmit={handleAddSubmit} newCategory={newCategory}
-                                 setNewCategory={setNewCategory}/>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 # SHS Finance
-![Logo](brand/logo-dark.png) 
+![Logo](public/brand/logo-dark.png) 
 ## Authors
 - [Coralid](https://github.com/Coralid)
 - [AustinC02](https://github.com/AustinC02)

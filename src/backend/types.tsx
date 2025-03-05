@@ -1,7 +1,6 @@
 export type Transaction = {
-    id: number;
-    type: "income"|"expense",
-    amount: number,
+    id: string;
+    sum: number,
+    name: string,
     date: Date,
-    category: string,
 }

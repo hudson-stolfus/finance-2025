@@ -18,19 +18,15 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-      <Nav />
-        {children}
-      </body>
-    </html>
-  );
+export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
+    return (
+        <html lang="en">
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                <div className="dashboard">
+                    <Nav />
+                    {children}
+                </div>
+            </body>
+        </html>
+    );
 }
