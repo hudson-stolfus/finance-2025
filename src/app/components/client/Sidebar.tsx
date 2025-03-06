@@ -1,25 +1,29 @@
 'use client'
+
 import React, {useState, useEffect, useCallback} from 'react';
 import {getAllTransactions} from '@/backend/data';
 import {Transaction} from '@/backend/types';
 import {saveAs} from 'file-saver';
 import * as XLSX from 'xlsx';
+import {ArrowRightFromLine, Import, Plus} from "lucide-react";
+import {usePathname} from "next/navigation";
 
 export default function Transactions() {
     const [search, setSearch] = useState('');
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState(0);
     const [, setTransactions] = useState<Transaction[]>([]);
     const [balance, setBalance] = useState<number>(0);
     const [, setIsAddModalOpen] = useState(false);
+    const location = usePathname();
 
     const handleSearch = useCallback(async () => {
-        const data = await getAllTransactions(search);
+        const data = await getAllTransactions(search, filter);
         setTransactions(data);
         const newBalance = data.reduce((acc, transaction) => {
-            return acc + transaction.sum;
+            return acc + transaction.total;
         }, 0);
         setBalance(newBalance);
-    }, [search]);
+    }, [search, filter]);
 
     const handleAdd = () => {
         setIsAddModalOpen(true);
@@ -39,39 +43,38 @@ export default function Transactions() {
         handleSearch();
     }, [search, filter, handleSearch]);
 
-    return (
-        <div className="p-6 min-h-screen">
-            <div className="mb-6 flex items-center">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="border p-3 mr-4 rounded-lg shadow-sm"
-                />
-                <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                    className="border p-3 mr-4 rounded-lg shadow-sm"
-                >
-                    <option value="">All</option>
-                    <option value="income">Income</option>
-                    <option value="expense">Expense</option>
+    return location === '/transactions' ? (
+        <div className="sidebar">
+            <div className="sidebar-header sidebar-split">
+                <div>Filter</div>
+                <div className="balance">${balance.toFixed(2)}</div>
+            </div>
+            <div className="card">
+                <input type="search" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                <select value={filter.toString()} onChange={(e) => setFilter(Number(e.target.value))}>
+                    <option value="0">All</option>
+                    <option value="1">Income</option>
+                    <option value="-1">Expense</option>
                 </select>
-                <button onClick={handleExport}
-                        className="bg-green-500 hover:bg-green-700 text-white p-3 rounded-lg shadow-lg">
+            </div>
+            <div className="sidebar-split">
+                <button onClick={handleExport}>
+                    <Import size={16} />
+                    Import
+                </button>
+                <button onClick={handleExport}>
+                    <ArrowRightFromLine />
                     Export
                 </button>
-                <button onClick={handleAdd}
-                        className="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-lg shadow-lg">
-                    Add Transaction
-                </button>
-                <div
-                    className="ml-auto text-3xl font-bold text-white p-4 bg-gradient-to-r from-green-400 to-blue-500 border-2 border-green-600 rounded shadow-lg">
-                    Balance: ${balance.toFixed(2)}
-                    <div className="text-sm text-white mt-1">*Affected by Filters</div>
-                </div>
             </div>
+            <hr />
+            <div className="sidebar-header">
+                Create Transaction
+            </div>
+            <button onClick={handleAdd} className="highlight">
+                <Plus size={16} />
+                Add Transaction
+            </button>
         </div>
-    );
+    ) : <></>;
 }

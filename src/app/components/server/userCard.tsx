@@ -7,9 +7,9 @@ export default function UserCard() {
         <Link className="user-card" href="/settings">
             <User className="user-icon" />
             <div className="user-info">
-                User Name
+                John Doe
                 <div className="user-manage">
-                    <Bolt />Manage
+                    <Bolt size={12}/>Manage
                 </div>
             </div>
         </Link>

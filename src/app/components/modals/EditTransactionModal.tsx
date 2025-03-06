@@ -24,7 +24,7 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
             <form onSubmit={onSubmit} className="space-y-6">
                 <div>
                     <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
-                    <input type="number" name="amount" id="amount" step="0.01" defaultValue={transaction.sum}
+                    <input type="number" name="amount" id="amount" step="0.01" defaultValue={transaction.total}
                            className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm"/>
                 </div>
                 <div>

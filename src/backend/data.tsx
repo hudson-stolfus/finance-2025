@@ -4,12 +4,14 @@ import {unstable_noStore as noStore} from "next/cache";
 import {Transaction} from "@/backend/types"
 
 // functions for grabbing various data
-export async function getAllTransactions(search = ""): Promise<Transaction[]> {
+export async function getAllTransactions(search: string = '', filter: number = 0): Promise<Transaction[]> {
     noStore();
-    const { rows } = await sql<Transaction>`
+
+    const {rows} = await sql<Transaction>`
         SELECT *
         FROM transactions
         WHERE name ILIKE ${`%${search}%`}
+          AND (SIGN(total) = ${filter} OR ${filter} = 0)
         ORDER BY date DESC;
     `;
     return rows;
@@ -21,12 +23,12 @@ export async function getTransactionById(id: number) {
 
 export async function getBalance() {
     let result = 0;
-    const { rows } = await sql<{sum: number}>`
-        SELECT sum
+    const { rows } = await sql<{total: number}>`
+        SELECT total
         FROM transactions;
     `;
     rows.forEach(row => {
-        result += Number(row.sum);
+        result += Number(row.total);
     });
     return result;
 }

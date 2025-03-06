@@ -8,20 +8,20 @@ export function TransacTable({ transactions, onDelete, onEdit }: {
     onEdit?: (transaction: Transaction) => void
 }) {
     return transactions.map((transaction) => (
-        <tr key={transaction.id} className="transaction" datatype={transaction.sum > 0 ? 'income' : 'expense'}>
+        <tr key={transaction.id} className="transaction" datatype={transaction.total > 0 ? 'income' : 'expense'}>
             <td className="transaction-date">{new Date(transaction.date).toLocaleDateString()}</td>
-            <td className="transaction-amount">{"$"+transaction.sum.toFixed(2)}</td>
+            <td className="transaction-amount">{"$"+transaction.total.toFixed(2)}</td>
             <td className="transaction-name">{transaction.name}</td>
             {(onDelete || onEdit) && (
                 <td className="transaction-actions">
                     {onEdit && (
                         <button onClick={() => onEdit(transaction)} className="transaction-action">
-                            <Pencil size={16} />
+                            <Pencil size={12} />
                         </button>
                     )}
                     {onDelete && (
                         <button onClick={() => onDelete(transaction.id.toString())} className="transaction-action">
-                            <Trash size={16} />
+                            <Trash size={12} />
                         </button>
                     )}
                 </td>

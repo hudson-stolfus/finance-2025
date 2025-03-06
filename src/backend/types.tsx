@@ -1,6 +1,6 @@
 export type Transaction = {
     id: string;
-    sum: number,
+    total: number,
     name: string,
     date: Date,
 }
