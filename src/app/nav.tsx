@@ -2,20 +2,21 @@
 
 import Link from 'next/link';
 import UserCard from "@/app/components/server/userCard";
-import {getBalance} from "@/backend/data";
+import {sumBalance} from "@/backend/util";
 import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
 import {ArrowLeftRight, CircleHelp} from "lucide-react";
+import {globals} from "@/app/globals";
 
 export default function Nav() {
     const [balance, setBalance] = useState<number>(0);
     const pathname = usePathname();
 
     useEffect(() => {
-        getBalance().then((result: number) => {
-            setBalance(Number(result));
-        });
-    }, [setBalance]);
+        globals.attachTransactionListener((update) => {
+            setBalance(sumBalance(update));
+        })
+    }, []);
 
     return (
         <div className='nav-wrapper'>

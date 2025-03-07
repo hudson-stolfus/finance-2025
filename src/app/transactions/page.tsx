@@ -1,28 +1,21 @@
 'use client'
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import {getAllTransactions} from '@/backend/data';
 import {deleteTransaction} from '@/backend/actions';
-import {TransacTable} from '@/app/components/server/serverComponents';
 import {Transaction} from '@/backend/types';
+import Filter from '../components/client/Filter';
+import Editor from "@/app/components/client/Editor";
+import {Pencil, Trash} from "lucide-react";
+import {globals} from "@/app/globals";
 
 export default function Transactions() {
-    const [, setBalance] = useState<number>(0);
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [transactions, setTransactions] = useState(globals.transactions);
+
     const [, setIsEditModalOpen] = useState(false);
     const [, setTransactionToEdit] = useState<Transaction | null>(null);
 
-    const handleSearch = useCallback(async () => {
-        const data = await getAllTransactions();
-        setTransactions(data);
-        const newBalance = data.reduce((acc, transaction) => {
-            return acc + transaction.total;
-        }, 0);
-        setBalance(newBalance);
-    }, []);
-
     const handleDelete = async (id: string) => {
         await deleteTransaction(id);
-        await handleSearch();
     };
 
     const handleEdit = (transaction: Transaction) => {
@@ -31,8 +24,18 @@ export default function Transactions() {
     };
 
     useEffect(() => {
-        handleSearch();
-    }, [handleSearch]);
+        globals.setSidebar(
+            <>
+                <Filter />
+                <hr />
+                <Editor />
+            </>
+        );
+    }, []);
+    useEffect(() => {
+        globals.attachTransactionListener(setTransactions);
+        getAllTransactions().then(globals.setTransactions);
+    }, []);
 
     return (
         <div className="card">
@@ -45,7 +48,23 @@ export default function Transactions() {
                     </tr>
                 </thead>
                 <tbody className="transactions-table-body">
-                    <TransacTable transactions={transactions} onDelete={handleDelete} onEdit={handleEdit}/>
+                {
+                    transactions.map((transaction) => (
+                        <tr key={transaction.id} className="transaction" datatype={transaction.total > 0 ? 'income' : 'expense'}>
+                            <td className="transaction-date">{new Date(transaction.date).toLocaleDateString()}</td>
+                            <td className="transaction-amount">{"$"+transaction.total.toFixed(2)}</td>
+                            <td className="transaction-name">{transaction.name}</td>
+                            <td className="transaction-actions">
+                                <button onClick={() => handleEdit(transaction)} className="transaction-action">
+                                    <Pencil size={12} />
+                                </button>
+                                <button onClick={() => handleDelete(transaction.id.toString())} className="transaction-action">
+                                    <Trash size={12} />
+                                </button>
+                            </td>
+                        </tr>
+                    ))
+                }
                 </tbody>
             </table>
         </div>

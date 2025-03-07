@@ -1,34 +1,5 @@
-import { Transaction } from "@/backend/types";
 import React from "react";
-import {Pencil, Trash} from "lucide-react";
 
-export function TransacTable({ transactions, onDelete, onEdit }: {
-    transactions: Transaction[],
-    onDelete?: (id: string) => Promise<void>,
-    onEdit?: (transaction: Transaction) => void
-}) {
-    return transactions.map((transaction) => (
-        <tr key={transaction.id} className="transaction" datatype={transaction.total > 0 ? 'income' : 'expense'}>
-            <td className="transaction-date">{new Date(transaction.date).toLocaleDateString()}</td>
-            <td className="transaction-amount">{"$"+transaction.total.toFixed(2)}</td>
-            <td className="transaction-name">{transaction.name}</td>
-            {(onDelete || onEdit) && (
-                <td className="transaction-actions">
-                    {onEdit && (
-                        <button onClick={() => onEdit(transaction)} className="transaction-action">
-                            <Pencil size={12} />
-                        </button>
-                    )}
-                    {onDelete && (
-                        <button onClick={() => onDelete(transaction.id.toString())} className="transaction-action">
-                            <Trash size={12} />
-                        </button>
-                    )}
-                </td>
-            )}
-        </tr>
-    ));
-}
 
 interface ModalProps {
     isOpen: boolean;

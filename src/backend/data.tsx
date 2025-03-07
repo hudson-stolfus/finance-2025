@@ -21,18 +21,6 @@ export async function getTransactionById(id: number) {
     alert(id)
 }
 
-export async function getBalance() {
-    let result = 0;
-    const { rows } = await sql<{total: number}>`
-        SELECT total
-        FROM transactions;
-    `;
-    rows.forEach(row => {
-        result += Number(row.total);
-    });
-    return result;
-}
-
 export async function getCategories() {
     const data = await sql`
         SELECT DISTINCT category FROM transactions;

@@ -1,4 +1,14 @@
+'use client'
+
+import {useEffect} from "react";
+import {globals} from "@/app/globals";
+
 export default function HelpPage() {
+
+    useEffect(() => {
+        globals.setSidebar(undefined);
+    }, []);
+
     return (
         <div className="card">
             <div className="readable">

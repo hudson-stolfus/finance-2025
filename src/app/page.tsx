@@ -1,7 +1,16 @@
+'use client'
+
 import Link from "next/link";
 import {ArrowRight} from "lucide-react";
+import {globals} from "@/app/globals";
+import {useEffect} from "react";
 
-export default async function App() {
+
+export default function LandingPage() {
+    useEffect(() => {
+        globals.setSidebar(undefined);
+    });
+
     return (
         <div className="hero">
             <div className="readable">
@@ -22,13 +31,6 @@ export default async function App() {
                     {/*    Sign Up <ArrowRight />*/}
                     {/*</Link>*/}
                 </center>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
                 <br/>
                 <br/>
                 <br/>

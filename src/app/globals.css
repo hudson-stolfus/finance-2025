@@ -263,7 +263,7 @@ nav {
 
 .split {
   max-width: calc(100vw - var(--spacing-xl) - var(--spacing-xl));
-  height: calc(100vh - var(--spacing-xl) - var(--spacing-xl));
+  height: calc(100dvh - var(--spacing-xl) - var(--spacing-xl));
   display: flex;
   gap: var(--spacing-xl);
   margin: var(--spacing-xl);
