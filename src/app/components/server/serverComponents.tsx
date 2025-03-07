@@ -1,7 +1,7 @@
-import { Transaction } from "@/backend/types";
+import {Transaction} from "@/backend/types";
 import React from "react";
 
-export function TransacTable({ transactions, onDelete, onEdit }: {
+export function TransacTable({transactions, onDelete, onEdit}: {
     transactions: Transaction[],
     onDelete?: (id: string) => Promise<void>,
     onEdit?: (transaction: Transaction) => void
@@ -20,10 +20,11 @@ export function TransacTable({ transactions, onDelete, onEdit }: {
                 </thead>
                 <tbody>
                 {transactions.map((transaction) => (
-                    <tr key={transaction.id} className={`border-b ${transaction.type === "income" ? "bg-green-100" : "bg-red-100"}`}>
+                    <tr key={transaction.id}
+                        className={`border-b ${transaction.type === "income" ? "bg-green-100" : "bg-red-100"}`}>
                         <td className="py-2 px-4">{new Date(transaction.date).toLocaleDateString()}</td>
                         <td className="py-2 px-4">{transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}</td>
-                        <td className="py-2 px-4">{"$"+transaction.amount.toFixed(2)}</td>
+                        <td className="py-2 px-4">{"$" + transaction.amount.toFixed(2)}</td>
                         <td className="py-2 px-4">{transaction.category}</td>
                         {(onDelete || onEdit) && (
                             <td className="py-2 px-4 flex space-x-2">
