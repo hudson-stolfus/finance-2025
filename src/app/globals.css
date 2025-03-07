@@ -152,7 +152,6 @@ button {
   background: hsl(from var(--bg-tertiary) h s l / 50%);
   border-radius: var(--radius);
   padding: var(--spacing-l) var(--spacing-xl);
-  line-height: 1;
 }
 
 .link-button {
@@ -163,7 +162,6 @@ button {
   background: var(--bg-tertiary);
   border-radius: var(--radius);
   padding: var(--spacing-m) var(--spacing-xl);
-  line-height: 1;
 }
 
 .highlight {
@@ -355,7 +353,6 @@ input {
   min-width: 1em;
   background: none;
   padding: var(--spacing-m) 0;
-  line-height: 1.2;
   flex-grow: 1;
   outline: none;
   border-radius: 0;
@@ -390,7 +387,6 @@ input:focus {
 select {
   background: none;
   padding: var(--spacing-m) var(--spacing-l);
-  line-height: 1;
   outline: none;
   border-radius: 0;
   -webkit-appearance: none;
