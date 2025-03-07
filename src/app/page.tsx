@@ -22,7 +22,7 @@ export default function LandingPage() {
                 </header>
                 <center>
                     <Link className="highlight link-button" href="/transactions">
-                        Continue as John Doe<ArrowRight />
+                        Continue as John Doe <ArrowRight size={16} />
                     </Link>
                     {/*<Link href="/transactions">*/}
                     {/*    Sign In <ArrowRight />*/}
