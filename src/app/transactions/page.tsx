@@ -28,7 +28,7 @@ export default function Transactions() {
             <>
                 <Filter />
                 <hr />
-                <Editor />
+                <Editor initial={{ name: '', total: 0, date: new Date() }} />
             </>
         );
     }, []);
@@ -59,7 +59,7 @@ export default function Transactions() {
                                 <button onClick={() => handleEdit(transaction)} className="transaction-action">
                                     <Pencil size={12} />
                                 </button>
-                                <button onClick={() => handleDelete(transaction.id.toString())} className="transaction-action">
+                                <button onClick={() => handleDelete(transaction.id?.toString() ?? '')} className="transaction-action">
                                     <Trash size={12} />
                                 </button>
                             </td>
