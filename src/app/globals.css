@@ -263,7 +263,7 @@ nav {
 
 .split {
   max-width: calc(100vw - var(--spacing-xl) - var(--spacing-xl));
-  height: calc(100dvh - var(--spacing-xl) - var(--spacing-xl));
+  height: calc(100svh - var(--spacing-xl) - var(--spacing-xl));
   display: flex;
   gap: var(--spacing-xl);
   margin: var(--spacing-xl);
@@ -311,6 +311,7 @@ input[type="search"] {
   line-height: 1;
   flex-grow: 1;
   outline: none;
+  border-radius: 0;
 }
 
 select {
@@ -319,6 +320,7 @@ select {
   padding: var(--spacing-m) var(--spacing-xl);
   line-height: 1;
   outline: none;
+  border-radius: 0;
 }
 
 .card {
