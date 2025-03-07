@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {getAllTransactions} from '@/backend/data';
 import {saveAs} from 'file-saver';
 import * as XLSX from 'xlsx';
-import {ArrowRightFromLine, Import} from "lucide-react";
+import {ArrowRightFromLine, FilterIcon, Import} from "lucide-react";
 import { sumBalance } from '@/backend/util';
 import {globals} from "@/app/globals";
 
@@ -40,6 +40,7 @@ export default function Filter() {
             </div>
             <div className="card">
                 <input type="search" placeholder="Search..." value={search} onChange={(e) => { setSearch(e.target.value); update(); }} />
+                <FilterIcon className="input-label" size={16} />
                 <select value={filter.toString()} onChange={(e) => { setFilter(Number(e.target.value)); update(); }}>
                     <option value="0">All</option>
                     <option value="1">Income</option>
