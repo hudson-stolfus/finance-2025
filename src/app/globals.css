@@ -57,6 +57,11 @@
   .desktop-label {
     display: none !important;
   }
+
+  .content {
+    padding: var(--spacing-m) !important;
+  }
+
 }
 
 @media (min-width: 700px) {
@@ -271,6 +276,7 @@ nav {
 }
 
 .dashboard {
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 2;
@@ -282,6 +288,8 @@ nav {
   flex-direction: column;
   gap: var(--spacing-xl);
   flex-grow: 1;
+  overflow: auto;
+  border-radius: var(--radius);
 }
 
 .sidebar-header {
@@ -303,6 +311,7 @@ nav {
   gap: var(--spacing-m);
   padding: var(--spacing-s);
   flex-grow: 0;
+  overflow: visible;
 }
 
 input[type="search"] {
@@ -312,6 +321,7 @@ input[type="search"] {
   flex-grow: 1;
   outline: none;
   border-radius: 0;
+  -webkit-appearance: none;
 }
 
 select {
@@ -321,6 +331,7 @@ select {
   line-height: 1;
   outline: none;
   border-radius: 0;
+  -webkit-appearance: none;
 }
 
 .card {
