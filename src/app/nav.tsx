@@ -44,13 +44,13 @@ export default function Nav() {
                 <div className="nav-section">
                     <Link href="/transactions">
                         <div className={pathname === '/transactions' ? "selector nav-item":"nav-item"}>
-                            <ArrowLeftRight className="mobile-icon" />
+                            <ArrowLeftRight className="mobile-icon" size={16} />
                             <span className="desktop-label">Transactions</span>
                         </div>
                     </Link>
                     <Link href="/help">
                         <div className={pathname === '/help' ? "selector nav-item":"nav-item"}>
-                            <CircleHelp className="mobile-icon" />
+                            <CircleHelp className="mobile-icon" size={16} />
                             <span className="desktop-label">Help</span>
                         </div>
                     </Link>

@@ -45,6 +45,7 @@ export default function Transactions() {
                         <th>Date</th>
                         <th>Amount</th>
                         <th>Name</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody className="transactions-table-body">
