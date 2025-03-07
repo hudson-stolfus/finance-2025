@@ -37,6 +37,12 @@
   }
 }
 
+@media (max-width: 900px) {
+  .split {
+    flex-direction: column !important;
+  }
+}
+
 @media (max-width: 700px) {
   :root {
     --radius: 24px;
@@ -44,10 +50,6 @@
 
   .brand-name {
     display: none;
-  }
-
-  .split {
-    flex-direction: column !important;
   }
 
   .mobile-icon {
@@ -134,7 +136,6 @@ hr {
 .lucide {
   display: inline;
   vertical-align: middle;
-  stroke-linecap: square;
 }
 
 button {
