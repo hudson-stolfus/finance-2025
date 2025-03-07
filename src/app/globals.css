@@ -61,7 +61,7 @@
   }
 
   .content {
-    padding: var(--spacing-m) !important;
+    padding: var(--spacing-s) !important;
   }
 
   .nav-item:has(svg) {
@@ -404,7 +404,7 @@ select {
               radial-gradient(circle at 20% 20%, hsl(from var(--color-accent) calc(h - 40) s l / 30%) 0%, transparent 50%);
   border-radius: var(--radius);
   padding: 20vh 0;
-  overflow: auto;
+  overflow-y: auto;
   flex-grow: 1;
 }
 
