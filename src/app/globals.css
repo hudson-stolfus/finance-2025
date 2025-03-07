@@ -290,7 +290,6 @@ nav {
   flex-grow: 1;
   overflow: auto;
   border-radius: var(--radius);
-  padding-bottom: var(--spacing-s);
 }
 
 .sidebar-header {
