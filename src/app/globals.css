@@ -164,6 +164,11 @@ button {
   padding: var(--spacing-m) var(--spacing-xl);
 }
 
+.link-button > svg {
+  width: 100%;
+  height: 100%;
+}
+
 .highlight {
   background: var(--color-accent);
   color: var(--bg-primary);
