@@ -62,6 +62,19 @@
     padding: var(--spacing-m) !important;
   }
 
+  .nav-item:has(svg) {
+    height: 2em;
+    padding: var(--spacing-m) !important;
+  }
+
+  .nav-item > svg {
+    vertical-align: top;
+  }
+
+  .nav-section .balance {
+    display: none;
+  }
+
 }
 
 @media (min-width: 700px) {
@@ -183,7 +196,7 @@ button {
 .logo {
   height: 1.5em;
   color: var(--color-accent);
-  margin-inline: var(--spacing-m);
+  margin-inline-end: var(--spacing-m);
   background: hsl(from var(--color-accent) h s l / 25%);
   border-radius: var(--radius);
 }
@@ -246,6 +259,7 @@ nav {
 
 .nav-item {
   padding: var(--spacing-s) var(--spacing-xl);
+  line-height: 1.2;
 }
 
 .selector {
@@ -268,7 +282,7 @@ nav {
 
 .split {
   max-width: calc(100vw - var(--spacing-xl) - var(--spacing-xl));
-  height: calc(100svh - var(--spacing-xl) - var(--spacing-xl));
+  height: calc(100dvh - var(--spacing-xl) - var(--spacing-xl));
   display: flex;
   gap: var(--spacing-xl);
   margin: var(--spacing-xl);
@@ -276,19 +290,20 @@ nav {
 }
 
 .dashboard {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
+  flex-shrink: 1;
   gap: var(--spacing-xl);
 }
 
 .sidebar {
+  min-width: 10vw;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
-  flex-grow: 1;
   overflow: auto;
+  flex-grow: 1;
   border-radius: var(--radius);
 }
 
@@ -365,15 +380,14 @@ select {
   color: var(--fg-secondary);
   font-weight: 100;
   position: sticky;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-tertiary);
   top: 0;
 }
+
 .transactions-table-header th {
   padding: var(--spacing-m) var(--spacing-m) var(--spacing-s) var(--radius);
   text-align: left;
-}
-
-.transactions-table-body:not(:empty) {
-  border-top: 1px solid var(--bg-tertiary);
 }
 
 .transactions-table {
