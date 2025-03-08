@@ -1,5 +1,5 @@
 # SHS Finance
-![Logo](brand/logo-dark.png) 
+![Logo](public/brand/logo-dark.png) 
 ## Authors
 - [Coralid](https://github.com/Coralid)
 - [AustinC02](https://github.com/AustinC02)
@@ -10,9 +10,10 @@
 | 2025-01-03 | HS & AC  | Brainstorming | :green_circle:  |
 | 2024-01-04 | HS       | Visual Markup | :green_circle:  |
 | 2025-01-04 | AC       | Pseudo Code   | :green_circle:  |
-| 2025-02-29 | AC       | All Code      | :green_circle:  |
+| 2025-02-29 | AC       | Bare bones    | :green_circle:  |
 | 2025-02-20 | AC       | Commenting    | :yellow_circle: |
-| 2025-03-15 | HS       | Styling       |  :red_circle:   |
+| 2025-03-10 | HS       | UI & UX       | :yellow_circle: |
+| 2025-03-15 | CC       | Auth          |  :red_circle:   |
 
 ## Topic
 Create a program that helps students manage their personal finances by tracking account balances, income and expenses. The program should allow users to input details about their income sources and expenses, including the amount, category, and date of each transaction.

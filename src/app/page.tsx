@@ -1,9 +1,62 @@
-// import {getCategories} from '@/backend/data';
-import HomeComponent from '@/app/HomeComponent';
-import {Transaction} from "@/backend/types";
+'use client'
 
-export default async function App() {
-    // const categories: string[] = await getCategories();
-    const categories: Transaction = []
-    return <HomeComponent categories={categories}/>;
+import Link from "next/link";
+import {ArrowRight} from "lucide-react";
+import {globals} from "@/app/globals";
+import {useEffect} from "react";
+
+
+export default function LandingPage() {
+    useEffect(() => {
+        globals.setSidebar(undefined);
+    });
+
+    return (
+        <div className="hero">
+            <div className="readable">
+                <header>
+                    <h1>Welcome to SHS Finance</h1>
+                    <div className="content">
+                        Your personal finance management tool.
+                    </div>
+                </header>
+                <center>
+                    <Link className="highlight link-button" href="/transactions">
+                        <span>Continue as John Doe</span><ArrowRight size={16} />
+                    </Link>
+                    {/*<Link href="/transactions">*/}
+                    {/*    Sign In <ArrowRight />*/}
+                    {/*</Link>*/}
+                    {/*<Link className="highlight" href="/transactions">*/}
+                    {/*    Sign Up <ArrowRight />*/}
+                    {/*</Link>*/}
+                </center>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+        </div>
+    );
 }
