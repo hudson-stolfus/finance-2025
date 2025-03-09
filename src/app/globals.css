@@ -7,16 +7,16 @@
     --color-accent-unthemed: hsl(0deg 100% 50%);;
   }
   12.5% {
-    --color-accent-unthemed: hsl(45deg 100% 50%);
+    --color-accent-unthemed: hsl(30deg 100% 50%);
   }
   25% {
-    --color-accent-unthemed: hsl(90deg 100% 50%);
+    --color-accent-unthemed: hsl(60deg 100% 50%);
   }
   37.5% {
     --color-accent-unthemed: hsl(135deg 100% 50%);
   }
   50% {
-    --color-accent-unthemed: hsl(180deg 100% 50%);
+    --color-accent-unthemed: hsl(170deg 100% 50%);
   }
   62.5% {
     --color-accent-unthemed: hsl(225deg 100% 50%);
@@ -32,6 +32,12 @@
   }
 }
 
+@property --color-accent-unthemed {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #004CFF;
+}
+
 :root {
   --radius: 16px;
   --spacing-s: 0.25em;
@@ -41,7 +47,7 @@
   --color-accent-unthemed: #004CFF;
   --color-positive: #00FF77;
   --color-negative: #FF0044;
-  animation: disco-mode 0.2s infinite;
+  animation: disco-mode linear 4s infinite;
 }
 
 @media (prefers-color-scheme: dark) {
