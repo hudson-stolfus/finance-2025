@@ -5,7 +5,7 @@ import UserCard from "@/app/components/server/userCard";
 import {sumBalance} from "@/backend/util";
 import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
-import {ArrowLeftRight, CircleHelp} from "lucide-react";
+import {ArrowLeftRight, ChartNoAxesCombined, CircleHelp} from "lucide-react";
 import {globals} from "@/app/globals";
 
 export default function Nav() {
@@ -46,6 +46,12 @@ export default function Nav() {
                         <div className={pathname === '/transactions' ? "selector nav-item":"nav-item"}>
                             <ArrowLeftRight className="mobile-icon" size={16} />
                             <span className="desktop-label">Transactions</span>
+                        </div>
+                    </Link>
+                    <Link href="/stats">
+                        <div className={pathname === '/stats' ? "selector nav-item":"nav-item"}>
+                            <ChartNoAxesCombined className="mobile-icon" size={16} />
+                            <span className="desktop-label">Stats</span>
                         </div>
                     </Link>
                     <Link href="/help">

@@ -8,32 +8,43 @@
   --spacing-m: 0.5em;
   --spacing-l: 0.75em;
   --spacing-xl: 1em;
-  --color-accent-unthemed: #004CFF;
-  --color-positive: #00FF77;
-  --color-negative: #FF0044;
+  --color-red: #FF0044;
+  --color-orange: #FF6600;
+  --color-yellow: #ffdd00;
+  --color-green: #00FF77;
+  --color-blue: #004CFF;
+  --color-purple: #dd00FF;
+  --color-accent: var(--color-blue);
+  --color-positive: var(--color-green);
+  --color-negative: var(--color-red);
+
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #000000;
-    --bg-secondary: #161616;
-    --bg-tertiary: #2d2d2d;
+    --bg-primary: hsl(from var(--color-accent) h calc(s / 4) 2.5%);
+    --bg-secondary: hsl(from var(--color-accent) h calc(s / 4) 7.5%);
+    --bg-tertiary: hsl(from var(--color-accent) h calc(s / 4) 15%);
     --fg-primary: #ffffff;
-    --fg-secondary: #aaaaaa;
-    --fg-tertiary: #666666;
-    --color-accent: var(--color-accent-unthemed);
+    --fg-secondary: hsl(from var(--color-accent) h calc(s / 8) 60%);
+    --fg-tertiary: hsl(from var(--color-accent) h calc(s / 8) 45%);
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg-primary: #eeeeee;
-    --bg-secondary: #ffffff;
-    --bg-tertiary: #dddddd;
-    --fg-primary: #000000;
-    --fg-secondary: #444444;
-    --fg-tertiary: #888888;
-    --color-accent: hsl(from var(--color-accent-unthemed) h s calc(l * 0.8));
+    --bg-primary: hsl(from var(--color-accent) h calc(s / 4) 95%);
+    --bg-secondary: hsl(from var(--color-accent) h calc(s / 4) 90%);
+    --bg-tertiary: hsl(from var(--color-accent) h calc(s / 4) 85%);
+    --fg-primary: hsl(from var(--color-accent) h calc(s / 4) 10%);
+    --fg-secondary: hsl(from var(--color-accent) h calc(s / 4) 15%);
+    --fg-tertiary: hsl(from var(--color-accent) h calc(s / 4) 25%);
+    --color-red: #dd0033;
+    --color-orange: #cc4400;
+    --color-yellow: #ccaa00;
+    --color-green: #00cc44;
+    --color-blue: #0033dd;
+    --color-purple: #bb00dd;
   }
 }
 
@@ -152,6 +163,10 @@ button {
   background: hsl(from var(--bg-tertiary) h s l / 50%);
   border-radius: var(--radius);
   padding: var(--spacing-l) var(--spacing-xl);
+}
+
+button:hover {
+  background: hsl(from var(--bg-tertiary) h s l) !important;
 }
 
 .link-button {
@@ -486,4 +501,58 @@ select {
   padding: var(--spacing-s) var(--spacing-m);
   border-radius: calc(var(--radius) - var(--spacing-m));
   line-height: 1;
+}
+
+.inline-selection > button.active {
+  background: var(--color-accent);
+}
+
+.inline-selection > button {
+  background: transparent;
+  border-radius: calc(var(--radius) - var(--spacing-m));
+  padding: var(--spacing-s) var(--spacing-xl);
+}
+
+.inline-selection {
+  background: hsl(from var(--bg-tertiary) h s l / 50%);
+  border-radius: var(--radius);
+  display: inline-flex;
+  padding: var(--spacing-m);
+  gap: var(--spacing-m);
+}
+
+.chart {
+  width: 100%;
+  padding: var(--spacing-xl);
+}
+
+.chart-intervals {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.chart-data {
+  height: 20vh;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--spacing-xl) 0;
+}
+
+.chart-interval {
+  flex: 1;
+  color: var(--fg-tertiary);
+  text-align: center;
+  font-weight: bold;
+}
+
+.bar {
+  width: var(--spacing-m);
+  background: var(--color-accent);
+  min-height: var(--spacing-m);
+  border-radius: var(--radius);
+  overflow: visible;
 }

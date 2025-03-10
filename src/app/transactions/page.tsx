@@ -32,6 +32,7 @@ export default function Transactions() {
             </>
         );
     }, []);
+
     useEffect(() => {
         globals.attachTransactionListener(setTransactions);
         getAllTransactions().then(globals.setTransactions);
