@@ -18,15 +18,18 @@ export async function newTransaction(Transaction: {
     `
 }
 
-export async function updateState(amount: number, type: "income" | "expense") {
-    await sql`
-        UPDATE app_state
-        SET current_balance =
-                CASE
-                    WHEN ${type} = 'income' THEN current_balance + ${amount}
-                    WHEN ${type} = 'expense' THEN current_balance - ${amount}
-                    END
-    `
+export async function updateState(amount: number, type: "old" | "new") {
+    if (type === "old") {
+        await sql`
+            UPDATE app_state
+            SET current_balance = current_balance - ${amount}
+        `
+    } else if (type === "new") {
+        await sql`
+            UPDATE app_state
+            SET current_balance = current_balance + ${amount}
+        `
+    }
 }
 
 export async function deleteTransaction(id: string) {
@@ -40,10 +43,9 @@ export async function deleteTransaction(id: string) {
 export async function editTransaction(transaction: Transaction) {
     await sql`
         UPDATE transactions
-        SET type     = ${transaction.type},
-            amount   = ${transaction.amount},
+        SET name     = ${transaction.name}
+            amount   = ${transaction.total},
             date     = ${transaction.date.toISOString().slice(0, 10)},
-            category = ${transaction.category}
         WHERE id = ${transaction.id}
     `;
 }
