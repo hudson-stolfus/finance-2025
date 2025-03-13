@@ -8,6 +8,7 @@
   --spacing-m: 0.5em;
   --spacing-l: 0.75em;
   --spacing-xl: 1em;
+  --spacing-xxl: 2em;
   --color-red: #FF0044;
   --color-orange: #FF6600;
   --color-yellow: #ffdd00;
@@ -24,7 +25,7 @@
   :root {
     --bg-primary: hsl(from var(--color-accent) h calc(s / 4) 2.5%);
     --bg-secondary: hsl(from var(--color-accent) h calc(s / 4) 7.5%);
-    --bg-tertiary: hsl(from var(--color-accent) h calc(s / 4) 15%);
+    --bg-tertiary: hsl(from var(--color-accent) h calc(s / 4) 12.5%);
     --fg-primary: #ffffff;
     --fg-secondary: hsl(from var(--color-accent) h calc(s / 8) 60%);
     --fg-tertiary: hsl(from var(--color-accent) h calc(s / 8) 45%);
@@ -432,7 +433,7 @@ select {
 
 .readable {
   margin: 0 auto;
-  padding: 2em;
+  padding: var(--spacing-xxl);
   max-width: 75ch;
 }
 
@@ -506,6 +507,7 @@ select {
 
 .inline-selection > button.active {
   background: var(--color-accent);
+  color: var(--bg-secondary);
 }
 
 .inline-selection > button {
@@ -515,7 +517,7 @@ select {
 }
 
 .inline-selection {
-  background: hsl(from var(--bg-tertiary) h s l / 50%);
+  background: var(--bg-tertiary);
   border-radius: var(--radius);
   display: inline-flex;
   padding: var(--spacing-m);
@@ -586,4 +588,20 @@ select {
   font-style: italic;
   font-size: 1.2em;
   align-self: center;
+}
+
+.stats-overview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.stats-info {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius);
+  padding: var(--spacing-xl) var(--spacing-xxl);
 }

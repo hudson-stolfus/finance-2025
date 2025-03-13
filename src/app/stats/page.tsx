@@ -26,28 +26,25 @@ export default function Stats() {
 
     return (
         <div className="card">
-            <div className="">
-                <div className="content">
-                    <h2>Final Balance</h2>
-                    {'$' + sumBalance(transactions).toFixed(2)}
-                </div>
-                <div className="content">
-                    <h2>Total Income</h2>
-                    {'$' + sumBalance(transactions.filter((t) => t.total >= 0)).toFixed(2)}
-                </div>
-                <div className="content">
-                    <h2>Total Expense</h2>
-                    {'$' + sumBalance(transactions.filter((t) => t.total < 0)).toFixed(2)}
+            <div className="content">
+                <h1>Overview</h1>
+                <div className="stats-overview">
+                    <div className="stats-info">
+                        Balance
+                        <h2 className="balance">${sumBalance(transactions).toFixed(2)}</h2>
+                    </div>
+                    <div className="stats-info">
+                        Income
+                        <h2 className="income">${ + sumBalance(transactions.filter((t) => t.total >= 0)).toFixed(2)}</h2>
+                    </div>
+                    <div className="stats-info">
+                        Expenses
+                        <h2 className="expense">${Math.abs(sumBalance(transactions.filter((t) => t.total < 0))).toFixed(2)}</h2>
+                    </div>
                 </div>
             </div>
-            <div className="mt-8">
-                <TrendChart transactions={transactions} />
-            </div>
-            <div className="mt-8">
-                {
-                    transactions.length > 0 ? <PieChartTopExpenses transactions={transactions}/> : null
-                }
-            </div>
+            <TrendChart transactions={transactions} />
+            {transactions.length > 0 ? <PieChartTopExpenses transactions={transactions}/> : null}
         </div>
     );
 }
