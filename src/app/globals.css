@@ -317,7 +317,7 @@ nav {
 }
 
 .sidebar {
-  min-width: 10vw;
+  min-width: 15vw;
   min-height: 20vh;
   display: flex;
   flex-direction: column;
@@ -427,6 +427,7 @@ select {
 
 .content {
   padding: var(--spacing-xl);
+  max-width: calc(100vw - var(--spacing-xl) - var(--spacing-xl));
 }
 
 .readable {
@@ -522,37 +523,67 @@ select {
 }
 
 .chart {
-  width: 100%;
   padding: var(--spacing-xl);
+  max-width: calc(70vw - var(--spacing-xl) - var(--spacing-xl));
 }
 
 .chart-intervals {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-end;
-  justify-content: space-around;
+  white-space: nowrap;
+  justify-content: space-between;
+  border-top: 1px solid var(--fg-tertiary);
 }
 
 .chart-data {
-  height: 20vh;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-around;
   padding: var(--spacing-xl) 0;
+  cursor: crosshair;
+  /*border-bottom: 1px solid var(--fg-tertiary);*/
+  overflow-x: auto;
+  overflow-y: hidden;
+  mask: linear-gradient(90deg, #0000 0, #000 40px, #000 calc(100% - 40px), #0000 100%);
 }
 
 .chart-interval {
-  flex: 1;
-  color: var(--fg-tertiary);
+  color: var(--fg-secondary);
+  font-size: 0.75em;
   text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.income {
+  color: var(--color-positive);
   font-weight: bold;
 }
 
-.bar {
-  width: var(--spacing-m);
-  background: var(--color-accent);
-  min-height: var(--spacing-m);
-  border-radius: var(--radius);
-  overflow: visible;
+.expense {
+  color: var(--color-negative);
+  font-weight: bold;
+}
+
+.inspection {
+  background: var(--bg-secondary);
+  border-radius: calc(var(--radius) - var(--spacing-m));
+  border: 1px solid hsl(from var(--fg-tertiary) h s l / 25%);
+  padding: var(--spacing-s) var(--spacing-m);
+  position: absolute;
+  z-index: 1;
+}
+
+.inspection-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-l);
+  padding: var(--spacing-s);
+}
+
+.inspection-item:not(:last-child) {
+  border-bottom: 1px solid var(--bg-tertiary) !important;
+}
+
+.date {
+  color: var(--fg-secondary);
+  font-style: italic;
+  font-size: 1.2em;
+  align-self: center;
 }

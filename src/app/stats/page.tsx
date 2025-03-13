@@ -1,6 +1,6 @@
 'use client'
 
-import TrendChart from "@/app/components/server/TrendChart";
+import TrendChart from "@/app/components/client/TrendChart";
 import PieChartTopExpenses from "@/app/components/server/PieChartTopExpenses";
 import React, {useEffect, useState} from "react";
 import {globals} from "@/app/globals";
@@ -41,9 +41,7 @@ export default function Stats() {
                 </div>
             </div>
             <div className="mt-8">
-                {
-                    transactions.length > 0 ? <TrendChart transactions={transactions} /> : null
-                }
+                <TrendChart transactions={transactions} />
             </div>
             <div className="mt-8">
                 {
