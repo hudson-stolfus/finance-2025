@@ -7,7 +7,6 @@ import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
 import {ArrowLeftRight, ChartNoAxesCombined, CircleHelp} from "lucide-react";
 import {globals} from "@/app/globals";
-import {getBalance} from "@/backend/data";
 
 export default function Nav() {
     const [balance, setBalance] = useState(globals.balance);
@@ -18,7 +17,6 @@ export default function Nav() {
             setBalance(sumBalance(update));
         })
         globals.attachBalanceListener(setBalance);
-        getBalance().then(globals.setBalance);
     }, []);
 
     return (
