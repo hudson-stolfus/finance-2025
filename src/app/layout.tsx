@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import Nav from "@/app/nav";
 import Sidebar from "@/app/components/client/Sidebar";
+import Dashboard from "@/app/dashboard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +26,9 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
             <div className="split">
-                <div className="dashboard">
-                    <Nav />
+                <Dashboard>
                     {children}
-                </div>
+                </Dashboard>
                 <Sidebar />
             </div>
             </body>

@@ -18,7 +18,6 @@
   --color-accent: var(--color-blue);
   --color-positive: var(--color-green);
   --color-negative: var(--color-red);
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -117,6 +116,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--fg-primary);
   font-weight: bold;
+  user-select: none;
 }
 
 h1 {
@@ -131,10 +131,6 @@ h2 {
 h3 {
   font-size: 1.25em;
   color: hsl(from var(--color-accent) h s calc(l * 0.75));
-}
-
-.content {
-  margin: var(--spacing-s) var(--spacing-xl);
 }
 
 ol {
@@ -258,7 +254,8 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-shrink: 1;
+  min-width: 0;
+  overflow-x: auto;
 }
 
 .nav-section {
@@ -318,13 +315,10 @@ nav {
 }
 
 .sidebar {
-  min-width: 15vw;
-  min-height: 20vh;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
-  overflow: auto;
-  flex-grow: 1;
+  overflow-y: auto;
   border-radius: var(--radius);
 }
 
@@ -333,6 +327,7 @@ nav {
   font-weight: bold;
   padding: var(--spacing-m);
   justify-content: space-between !important;
+  user-select: none;
 }
 
 .sidebar-split {
@@ -385,6 +380,7 @@ input:focus {
   text-align: center;
   padding: var(--spacing-m);
   font-weight: bold;
+  user-select: none;
 }
 
 .date-picker-day {
@@ -427,8 +423,9 @@ select {
 }
 
 .content {
+  margin: var(--spacing-s) var(--spacing-xl);
   padding: var(--spacing-xl);
-  max-width: calc(100vw - var(--spacing-xl) - var(--spacing-xl));
+  width: calc(100% - var(--spacing-xl) - var(--spacing-xl));
 }
 
 .readable {
@@ -526,14 +523,14 @@ select {
 
 .chart {
   padding: var(--spacing-xl);
-  max-width: calc(70vw - var(--spacing-xl) - var(--spacing-xl));
+  max-width: calc(100% - var(--spacing-xl) - var(--spacing-xl));
 }
 
 .chart-intervals {
   display: flex;
   white-space: nowrap;
   justify-content: space-between;
-  border-top: 1px solid var(--fg-tertiary);
+  border-top: 2px solid var(--fg-tertiary);
 }
 
 .chart-data {
@@ -547,7 +544,6 @@ select {
 
 .chart-interval {
   color: var(--fg-secondary);
-  font-size: 0.75em;
   text-align: center;
   font-weight: bold;
   display: inline-block;
@@ -604,4 +600,46 @@ select {
   background: var(--bg-tertiary);
   border-radius: var(--radius);
   padding: var(--spacing-xl) var(--spacing-xxl);
+}
+
+.sizer-x, .sizer-y {
+  position: absolute;
+  background-color: var(--bg-primary);
+}
+
+.sizer-x .lucide, .sizer-y .lucide {
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+  position: relative;
+  color: var(--fg-tertiary);
+}
+
+.sizer-x:hover .lucide .sizer-y:hover .lucide {
+  color: var(--fg-primary);
+}
+
+.sizer-x.active .lucide, .sizer-y.active .lucide {
+  color: var(--color-accent);
+}
+
+.sizer-x {
+  height: calc(100vh - var(--spacing-xl) - var(--spacing-xl));
+  width: var(--spacing-xl);
+  cursor: ew-resize;
+}
+
+.sizer-x .lucide {
+  top: calc(50% - calc(var(--spacing-xl) / 2));
+  left: 0;
+}
+
+.sizer-y {
+  height: var(--spacing-xl);
+  width: calc(100vw - var(--spacing-xl) - var(--spacing-xl));
+  cursor: ns-resize;
+}
+
+.sizer-y .lucide {
+  left: calc(50% - calc(var(--spacing-xl) / 2));
+  top: -0.3em;
 }

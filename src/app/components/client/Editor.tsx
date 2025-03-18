@@ -32,6 +32,10 @@ export default function Editor(props: EditorProps) {
                 Create Transaction
             </div>
             <div className="card">
+                <input type="text" id="name" placeholder="Name" defaultValue={transaction.name} />
+
+            </div>
+            <div className="card">
                 <DollarSign className="input-label" size={16} />
                 <input type="number" id="total" step="0.01" defaultValue={transaction.total} />
             </div>
@@ -45,9 +49,6 @@ export default function Editor(props: EditorProps) {
                         MonthDays(transaction.date).map((date) => <div className={`date-picker-day${transaction.date.getDate() == date ? ' highlight' : ''}`} key={date}>{date}</div>)
                     }
                 </div>
-            </div>
-            <div className="card">
-                <input type="text" id="name" placeholder="Name" defaultValue={transaction.name} />
             </div>
             <button onClick={save} className="highlight">
                 <Save size={16} />

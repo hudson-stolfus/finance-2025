@@ -44,7 +44,7 @@ export default function PieChartTopExpenses({transactions, topCount = 5}: PieCha
         labels,
         datasets: [
             {
-                label: 'Expenses by Category',
+                label: 'Expenses',
                 data: dataValues,
                 backgroundColor: backgroundColors.slice(0, labels.length),
                 borderWidth: 0
@@ -57,21 +57,15 @@ export default function PieChartTopExpenses({transactions, topCount = 5}: PieCha
         plugins: {
             legend: {
                 display: false
-            },
-            title: {
-                display: true,
-                text: 'Top Expense Categories',
-                font: {
-                    size: 24,
-                }
             }
         }
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="content">
+            <h1>Expenses</h1>
             {/* Pie chart on the left */}
-            <div className="w-full md:w-1/2 p-4">
+            <div className="w-full md:w-1/2 p-8">
                 <Doughnut data={chartData} options={chartOptions}/>
             </div>
             {/* Custom legend on the right */}
