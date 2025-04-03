@@ -157,7 +157,7 @@ button {
   gap: var(--spacing-m);
   justify-content: center;
   align-items: center;
-  background: hsl(from var(--bg-tertiary) h s l / 50%);
+  background: hsl(from var(--bg-tertiary) h s l / calc(alpha / 2));
   border-radius: var(--radius);
   padding: var(--spacing-l) var(--spacing-xl);
 }
