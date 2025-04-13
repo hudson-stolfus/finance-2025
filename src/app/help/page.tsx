@@ -16,8 +16,8 @@ export default function HelpPage() {
                 <div className="content">
                     <h2>View Your Balance</h2>
                     <p className="content">
-                        Your current balance is displayed on the homepage. It automatically updates whenever you add, edit,
-                        or delete a transaction. In case of extreme server latency, you can manually recalculate your balance.
+                        Your current balance is displayed on the navbar. It automatically updates whenever you add, edit,
+                        or delete a transaction.
                     </p>
 
                     <h2>Add a Transaction</h2>
@@ -66,15 +66,6 @@ export default function HelpPage() {
                             <li>Click the <span className="font-semibold">&quot;Export&quot;</span> button.</li>
                             <li>Your transactions will be downloaded as an Excel file.</li>
                         </ol>
-                    </div>
-
-                    <h2>Recalculate Balance</h2>
-                    <div className="content">
-                        <p> If you suspect your balance is incorrect, you can manually recalculate it: </p>
-                        <div className="content">
-                            Click the <span className="font-semibold">&quot;Recalculate Balance&quot;</span> button on
-                            the homepage.
-                        </div>
                     </div>
                 </div>
             </div>

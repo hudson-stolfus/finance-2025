@@ -85,13 +85,16 @@ export default function TrendChart(props: TrendChartProps) {
             return { income: 0, expense: 0 };
         }
 
+        income /= 2;
+        expense /= 2;
+
         return {income, expense};
     }
     const inspectChart = (event: React.MouseEvent<SVGElement>)=> {
         setInspect(event.clientX - event.currentTarget.getBoundingClientRect().left);
         setInspectEventTop(event.clientY);
     };
-    const inspectedInterval = Math.min(Math.round((inspect ?? 0) / interval(new Date()).width - 0.5), columns.length);
+    const inspectedInterval = Math.min(Math.round(0.999 * (inspect ?? 0) / interval(new Date()).width - 0.5), columns.length);
     const graphBounds = graphRef.current?.getBoundingClientRect() ?? { x: 0, y: 0, width: 0, height: 0, left: 0, top: 0, bottom: 0, right: 0 } as DOMRect;
     const graphScroll = { left: graphRef.current?.scrollLeft ?? 0, top: graphRef.current?.scrollTop ?? 0, width: graphRef.current?.scrollWidth ?? 0 };
     const clientInspect = Math.max(Math.min((inspect ?? 0) - graphScroll.left, graphBounds.width), 0) + graphBounds.left;
@@ -110,6 +113,9 @@ export default function TrendChart(props: TrendChartProps) {
             return a;
         }, 0));
     });
+
+    max /= 2;
+    min /= 2;
 
     for (let i = 0; i < columns.length; i++) {
         if (i == 0) {
