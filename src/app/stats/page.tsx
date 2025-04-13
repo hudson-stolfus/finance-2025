@@ -19,7 +19,7 @@ export default function Stats() {
     useEffect(() => {
         globals.setSidebar(
             <>
-                <Editor initial={{ name: '', total: 0, date: new Date() }} />
+                <Editor create initial={{ name: '', total: 0, date: new Date() }} />
             </>
         );
     }, []);

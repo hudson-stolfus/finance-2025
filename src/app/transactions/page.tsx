@@ -11,16 +11,19 @@ import {globals} from "@/app/globals";
 export default function Transactions() {
     const [transactions, setTransactions] = useState(globals.transactions);
 
-    const [, setIsEditModalOpen] = useState(false);
-    const [, setTransactionToEdit] = useState<Transaction | null>(null);
-
     const handleDelete = async (id: string) => {
         await deleteTransaction(id);
+        getAllTransactions().then(globals.setTransactions);
     };
 
     const handleEdit = (transaction: Transaction) => {
-        setTransactionToEdit(transaction);
-        setIsEditModalOpen(true);
+        globals.setSidebar(
+            <>
+                <Filter />
+                <hr />
+                <Editor initial={{ id: transaction.id, name: transaction.name, total: transaction.total, date: transaction.date }} />
+            </>
+        );
     };
 
     useEffect(() => {
@@ -28,7 +31,7 @@ export default function Transactions() {
             <>
                 <Filter />
                 <hr />
-                <Editor initial={{ name: '', total: 0, date: new Date() }} />
+                <Editor create initial={{ name: '', total: 0, date: new Date() }} />
             </>
         );
     }, []);

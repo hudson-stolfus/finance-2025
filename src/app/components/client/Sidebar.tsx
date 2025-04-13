@@ -40,7 +40,7 @@ export default function Sidebar() {
         window.addEventListener('mousemove', listener);
         window.addEventListener('mouseup', () => {
             target.classList.remove('active');
-            window.removeEventListener('mousemove', listener)
+            window.removeEventListener('mousemove', listener);``
         });
     }
 

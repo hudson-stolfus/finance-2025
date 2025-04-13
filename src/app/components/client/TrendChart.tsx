@@ -148,13 +148,13 @@ export default function TrendChart(props: TrendChartProps) {
                 </div>
                 <div className="chart-intervals">
                     <div className="chart-interval">
-                        {new Date(columns[view - Math.round(graphBounds.width / interval(new Date()).width - 0.5)] ?? Date.now()).toLocaleDateString('en-US', { day: 'numeric', month: 'numeric' })}
+                        {new Date(columns[Math.floor((view * (graphScroll.width - graphBounds.width)) / graphScroll.width)] ?? Date.now()).toLocaleDateString('en-US', { day: 'numeric', month: 'numeric' })}
                     </div>
                     <div className="chart-interval" style={{ visibility: inspect ? 'visible' : 'hidden', position: 'relative', left: clientInspect - graphBounds.width / 2 - graphBounds.left }}>
                         {new Date(columns[inspectedInterval] ?? Date.now()).toLocaleDateString('en-US', { day: 'numeric', month: 'numeric' })}
                     </div>
                     <div className="chart-interval">
-                        {new Date(columns[view] ?? Date.now()).toLocaleDateString('en-US', { day: 'numeric', month: 'numeric' })}
+                        {new Date(columns[view + Math.round(graphBounds.width / interval(new Date()).width - 0.5)] ?? Date.now()).toLocaleDateString('en-US', { day: 'numeric', month: 'numeric' })}
                     </div>
                 </div>
                 <div className="inspection" style={{left: clientInspect,

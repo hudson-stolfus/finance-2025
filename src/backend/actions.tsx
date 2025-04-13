@@ -14,11 +14,21 @@ export async function deleteTransaction(id: string) {
 }
 
 export async function editTransaction(transaction: Transaction) {
-    await sql`
+    if (transaction.id) {
+        await sql`
         UPDATE transactions
-        SET name     = ${transaction.name},
-            total   = ${transaction.total},
-            date     = ${transaction.date.toISOString().slice(0, 10)}
+        SET name = ${transaction.name},
+            total = ${transaction.total},
+            date = ${transaction.date.toISOString().slice(0, 10)}
         WHERE id = ${transaction.id}
-    `;
+        `;
+    } else {
+        await sql`
+        INSERT INTO transactions (total, date, name)
+        VALUES (
+            ${transaction.total},
+            ${transaction.date.toISOString().slice(0, 10)},
+            ${transaction.name}
+        )`;
+    }
 }

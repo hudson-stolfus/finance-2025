@@ -367,8 +367,8 @@ input {
   flex-grow: 1;
   outline: none;
   border-radius: 0;
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield !important;
+  /*-webkit-appearance: textfield;*/
+  /*-moz-appearance: textfield !important;*/
 }
 
 input:focus {
@@ -540,6 +540,12 @@ select {
   overflow-x: auto;
   overflow-y: hidden;
   mask: linear-gradient(90deg, #0000 0, #000 40px, #000 calc(100% - 40px), #0000 100%);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chart-data::-webkit-scrollbar {
+  display: none;
 }
 
 .chart-interval {
@@ -566,6 +572,7 @@ select {
   padding: var(--spacing-s) var(--spacing-m);
   position: absolute;
   z-index: 1;
+  pointer-events: none;
 }
 
 .inspection-item {

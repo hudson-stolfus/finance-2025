@@ -65,11 +65,11 @@ export default function PieChartTopExpenses({transactions, topCount = 5}: PieCha
         <div className="content">
             <h1>Expenses</h1>
             {/* Pie chart on the left */}
-            <div className="w-full md:w-1/2 p-8">
+            <div className="inline-block md:w-1/3 p-8">
                 <Doughnut data={chartData} options={chartOptions}/>
             </div>
             {/* Custom legend on the right */}
-            <div className="w-full md:w-1/2 p-4">
+            <div className="inline-block md:w-1/3 p-8 align-top">
                 <ul>
                     {labels.map((label, index) => {
                         const percentage =
