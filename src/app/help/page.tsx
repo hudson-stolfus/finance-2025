@@ -16,18 +16,16 @@ export default function HelpPage() {
                 <div className="content">
                     <h2>View Your Balance</h2>
                     <p className="content">
-                        Your current balance is displayed on the navbar. It automatically updates whenever you add, edit,
-                        or delete a transaction.
+                        You balance is located inside the navbar.
                     </p>
 
                     <h2>Add a Transaction</h2>
                     <div className="content">
+                        <p className="content">
+                            Navigate to the transaction pane on the right-hand side of your screen
+                        </p>
                         <ol>
-                            <li>Click the <span className="font-semibold">&quot;Add Transaction&quot;</span> button on the
-                                homepage.
-                            </li>
-                            <li>Fill in the form with the transaction type (income or expense), amount, date, and
-                                category.
+                            <li>Enter your transaction information
                             </li>
                             <li>Click <span className="font-semibold">&quot;Add Transaction&quot;</span> to save.</li>
                         </ol>
@@ -35,37 +33,21 @@ export default function HelpPage() {
 
                     <h2>View All Transactions</h2>
                     <div className="content">
-                        <ul>
-                            <li>Click the <span className="font-semibold">&quot;View All Transactions&quot;</span> button on
-                                the homepage.
-                            </li>
-                            <li>You can search, filter, and sort transactions by type, date, or category.</li>
-                        </ul>
+                        <p className="content">
+                            By clicking the <span className="font-semibold">&quot;Transactions&quot;</span> button in the navigation pane, you can navigate to the page with all transactions. You can filter these transactions using the options in the right-hand pane.
+                        </p>
                     </div>
 
                     <h2>Edit or Delete a Transaction</h2>
                     <div className="content">
-                        <ol>
-                            <li>Go to the <span className="font-semibold">&quot;View All Transactions&quot;</span> page.
-                            </li>
-                            <li>Click the <span className="font-semibold">&quot;Edit&quot;</span> or <span
-                                className="font-semibold">&quot;Delete&quot;</span> button next to the transaction you want
-                                to modify.
-                            </li>
-                            <li>For edits, update the details and click <span
-                                className="font-semibold">&quot;Save&quot;</span>.
-                            </li>
-                        </ol>
+                        <p className="content">
+                            While on the <span className="font-semibold">&quot;Transactions&quot;</span> page, hover over the desired transaction. On the right hand side, edit and delete options will appear.
+                        </p>
                     </div>
 
                     <h2>Export Transactions</h2>
                     <div className="content">
-                        <ol>
-                            <li>Go to the <span className="font-semibold">&quot;View All Transactions&quot;</span> page.
-                            </li>
-                            <li>Click the <span className="font-semibold">&quot;Export&quot;</span> button.</li>
-                            <li>Your transactions will be downloaded as an Excel file.</li>
-                        </ol>
+                        <p>Click the <span className="font-semibold">&quot;Export&quot;</span> button within the right-hand pane.</p>
                     </div>
                 </div>
             </div>
