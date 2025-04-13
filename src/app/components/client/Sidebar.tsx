@@ -40,7 +40,7 @@ export default function Sidebar() {
         window.addEventListener('mousemove', listener);
         window.addEventListener('mouseup', () => {
             target.classList.remove('active');
-            window.removeEventListener('mousemove', listener);``
+            window.removeEventListener('mousemove', listener);
         });
     }
 
@@ -51,7 +51,7 @@ export default function Sidebar() {
 
     return children ? (
         <>
-            {window.innerWidth > 900 ? (
+            {window.innerWidth ?? 1000 > 900 ? (
                     <div className="sizer-x" style={{right: `calc(${size}px - calc(var(--spacing-xl) / 2))`}} onMouseDown={resizeX}>
                         <GripVertical />
                     </div>
